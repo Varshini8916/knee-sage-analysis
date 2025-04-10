@@ -22,6 +22,8 @@
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
+  line-height: 1.2;
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -38,6 +40,8 @@
   font-size: 1.125rem;
   color: #4b5563;
   margin-bottom: 1.5rem;
+  max-width: 100%;
+  line-height: 1.5;
 }
 
 .hero-actions {
@@ -76,6 +80,7 @@
   max-height: 20rem;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
 }
 
 .overview-grid {
@@ -119,6 +124,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   text-align: center;
+  height: 100%;
 }
 
 .step-number {
@@ -151,4 +157,13 @@
 .cta-section {
   margin-top: 2.5rem;
   text-align: center;
+}
+
+/* Fix for list items in overview section */
+.overview-card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.overview-card ul li:last-child {
+  margin-bottom: 0;
 }
