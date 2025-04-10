@@ -1,3 +1,4 @@
+
 import { ArrowLeft, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +7,8 @@ import { Link, Navigate } from "react-router-dom";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from "recharts";
 import { usePrediction } from "@/lib/prediction-context";
 import { useEffect } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PerformanceHeatmap from "@/components/PerformanceHeatmap";
 
 // Sample data for the confusion matrix - in a real app, this would come from the backend
 const confusionMatrixData = [
@@ -180,33 +183,49 @@ const PredictionPage = () => {
             </div>
           </div>
           
-          {/* Right column - Confusion Matrix and Additional Info */}
+          {/* Right column - Analysis Visualizations with Tabs */}
           <div>
             <Card className="mb-8">
               <CardContent className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-6">Confusion Matrix</h2>
-                <div className="h-64">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                      data={confusionMatrixData}
-                      layout="vertical"
-                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" />
-                      <YAxis dataKey="name" type="category" />
-                      <Bar dataKey="True Positive" stackId="a" fill="#22c55e">
-                        {confusionMatrixData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={index === 3 ? "#f97316" : "#22c55e"} />
-                        ))}
-                      </Bar>
-                      <Bar dataKey="False Positive" stackId="a" fill="#ef4444" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-                <p className="text-xs text-gray-500 mt-2 text-center">
-                  Model performance visualization across different KL grades
-                </p>
+                <h2 className="text-xl font-semibold text-gray-800 mb-6">Analysis Visualizations</h2>
+                
+                <Tabs defaultValue="confusion">
+                  <TabsList className="grid grid-cols-2 mb-4">
+                    <TabsTrigger value="confusion">Confusion Matrix</TabsTrigger>
+                    <TabsTrigger value="heatmap">Heatmap</TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="confusion">
+                    <div className="h-64">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                          data={confusionMatrixData}
+                          layout="vertical"
+                          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis type="number" />
+                          <YAxis dataKey="name" type="category" />
+                          <Bar dataKey="True Positive" stackId="a" fill="#22c55e">
+                            {confusionMatrixData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={index === 3 ? "#f97316" : "#22c55e"} />
+                            ))}
+                          </Bar>
+                          <Bar dataKey="False Positive" stackId="a" fill="#ef4444" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2 text-center">
+                      Model performance visualization across different KL grades
+                    </p>
+                  </TabsContent>
+                  
+                  <TabsContent value="heatmap">
+                    <div className="h-64">
+                      <PerformanceHeatmap />
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </CardContent>
             </Card>
             

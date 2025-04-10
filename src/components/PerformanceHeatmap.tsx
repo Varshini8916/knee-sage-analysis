@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 type HeatmapData = {
@@ -11,7 +10,7 @@ type HeatmapData = {
 
 const PerformanceHeatmap = () => {
   // Sample data for the heatmap (accuracy across different age groups and genders)
-  const [data] = useState<HeatmapData[]>([
+  const data: HeatmapData[] = [
     { x: "45-55", y: "Male", value: 0.88 },
     { x: "45-55", y: "Female", value: 0.92 },
     { x: "56-65", y: "Male", value: 0.90 },
@@ -20,7 +19,7 @@ const PerformanceHeatmap = () => {
     { x: "66-75", y: "Female", value: 0.91 },
     { x: "76+", y: "Male", value: 0.85 },
     { x: "76+", y: "Female", value: 0.87 },
-  ]);
+  ];
 
   const xLabels = ["45-55", "56-65", "66-75", "76+"];
   const yLabels = ["Male", "Female"];
@@ -41,73 +40,68 @@ const PerformanceHeatmap = () => {
   };
 
   return (
-    <Card className="mt-8">
-      <CardHeader>
-        <CardTitle>Model Performance Heatmap</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="text-sm text-gray-500 mb-2">Performance across different demographics (Accuracy)</div>
-        <div className="flex flex-col mt-4">
-          <div className="flex mb-2">
-            <div className="w-20"></div>
-            {xLabels.map(label => (
-              <div key={label} className="flex-1 text-center font-medium text-sm">
-                {label}
-              </div>
-            ))}
-          </div>
-          
-          {yLabels.map(yLabel => (
-            <div key={yLabel} className="flex mb-2">
-              <div className="w-20 flex items-center font-medium text-sm">
-                {yLabel}
-              </div>
-              {xLabels.map(xLabel => {
-                const value = findValue(xLabel, yLabel);
-                return (
-                  <TooltipProvider key={`${xLabel}-${yLabel}`}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="flex-1 mx-1">
-                          <div 
-                            className={`rounded h-12 ${getColor(value)} flex items-center justify-center text-white font-semibold`}
-                          >
-                            {(value * 100).toFixed(1)}%
-                          </div>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Age: {xLabel}</p>
-                        <p>Gender: {yLabel}</p>
-                        <p>Accuracy: {(value * 100).toFixed(1)}%</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                );
-              })}
+    <div className="h-full flex flex-col">
+      <div className="text-sm text-gray-500 mb-2">Accuracy across demographics</div>
+      
+      <div className="flex-1 flex flex-col">
+        <div className="flex">
+          <div className="w-16"></div>
+          {xLabels.map(label => (
+            <div key={label} className="flex-1 text-center font-medium text-xs">
+              {label}
             </div>
           ))}
         </div>
         
-        <div className="flex justify-center mt-6">
-          <div className="flex items-center">
-            <div className="text-sm text-gray-600 mr-2">Accuracy:</div>
-            <div className="flex">
-              <div className="w-8 h-4 bg-green-200 rounded-l"></div>
-              <div className="w-8 h-4 bg-green-300"></div>
-              <div className="w-8 h-4 bg-green-400"></div>
-              <div className="w-8 h-4 bg-green-500"></div>
-              <div className="w-8 h-4 bg-green-600 rounded-r"></div>
+        {yLabels.map(yLabel => (
+          <div key={yLabel} className="flex flex-1 mb-1">
+            <div className="w-16 flex items-center font-medium text-xs">
+              {yLabel}
             </div>
-            <div className="flex justify-between text-xs text-gray-600 mt-1 w-40 ml-1">
-              <span>85%</span>
-              <span>90%</span>
-              <span>95%</span>
-            </div>
+            {xLabels.map(xLabel => {
+              const value = findValue(xLabel, yLabel);
+              return (
+                <TooltipProvider key={`${xLabel}-${yLabel}`}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="flex-1 mx-0.5">
+                        <div 
+                          className={`rounded h-full ${getColor(value)} flex items-center justify-center text-white font-semibold text-xs`}
+                        >
+                          {(value * 100).toFixed(0)}%
+                        </div>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xs">Age: {xLabel}</p>
+                      <p className="text-xs">Gender: {yLabel}</p>
+                      <p className="text-xs font-bold">Accuracy: {(value * 100).toFixed(1)}%</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      
+      <div className="flex justify-center mt-auto pt-2">
+        <div className="flex items-center">
+          <div className="text-xs text-gray-600 mr-2">Accuracy:</div>
+          <div className="flex">
+            <div className="w-6 h-3 bg-green-200 rounded-l"></div>
+            <div className="w-6 h-3 bg-green-300"></div>
+            <div className="w-6 h-3 bg-green-400"></div>
+            <div className="w-6 h-3 bg-green-500"></div>
+            <div className="w-6 h-3 bg-green-600 rounded-r"></div>
+          </div>
+          <div className="flex justify-between text-[10px] text-gray-600 mt-1 w-30 ml-1">
+            <span>85%</span>
+            <span>95%</span>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

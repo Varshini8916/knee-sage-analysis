@@ -19,6 +19,10 @@
   padding: 1rem 0;
 }
 
+.logo-container {
+  margin-right: auto;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -47,6 +51,10 @@
     display: flex;
     gap: 0.25rem;
   }
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .nav-link {

@@ -22,15 +22,15 @@ const Header = () => {
   return (
     <header className="header full-width">
       <div className="container-custom header-container">
-        <div>
+        <div className="logo-container">
           <Link to="/" className="logo">
             <span className="logo-text-bold">KOA</span>
             <span className="logo-text-light">Detect</span>
           </Link>
         </div>
         
-        {/* Desktop navigation */}
-        <div className="desktop-nav">
+        {/* Desktop navigation - moved more to the right */}
+        <div className="desktop-nav ml-auto">
           {navItems.map((item) => (
             <Link key={item.path} to={item.path} className="nav-link">
               <button 
