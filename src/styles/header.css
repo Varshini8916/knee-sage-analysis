@@ -50,11 +50,8 @@
   .desktop-nav {
     display: flex;
     gap: 0.25rem;
+    margin-left: auto;
   }
-}
-
-.ml-auto {
-  margin-left: auto;
 }
 
 .nav-link {

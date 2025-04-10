@@ -29,8 +29,8 @@ const Header = () => {
           </Link>
         </div>
         
-        {/* Desktop navigation - moved more to the right */}
-        <div className="desktop-nav ml-auto">
+        {/* Desktop navigation - moved to the extreme right */}
+        <div className="desktop-nav">
           {navItems.map((item) => (
             <Link key={item.path} to={item.path} className="nav-link">
               <button 

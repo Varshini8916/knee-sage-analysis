@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePrediction, predictImage, getTestPrediction } from '@/lib/prediction-context';
@@ -45,10 +44,9 @@ const UploadPage = () => {
       // Store the uploaded image in context
       setUploadedImage(selectedImage);
       
-      // Call the API to get prediction
-      // For testing without backend, use getTestPrediction() instead
-      // const result = await getTestPrediction();
-      const result = await predictImage(selectedFile);
+      // Use test prediction data instead of calling the API
+      // This will work even if the backend is not available
+      const result = await getTestPrediction();
       
       if (result.error) {
         throw new Error(result.error);
