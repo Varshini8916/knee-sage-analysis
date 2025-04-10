@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const AboutPage = () => {
   return (
     <div className="animate-fade-in">
-      <div className="bg-gradient-to-b from-medical-50 to-white py-12">
+      <div className="bg-gradient-to-b from-medical-50 to-white py-12 full-width">
         <div className="container-custom">
           <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">
             About Knee Osteoarthritis
@@ -89,47 +89,6 @@ const AboutPage = () => {
                 for osteoarthritis classification according to our modified Kellgren-Lawrence scale.
               </p>
             </section>
-            
-            <section>
-              <h2 className="section-subtitle">Our Team</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                  <div className="w-24 h-24 bg-medical-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-medical-600">JD</span>
-                  </div>
-                  <h3 className="font-bold text-lg text-gray-800">Dr. Jane Doe</h3>
-                  <p className="text-medical-600 text-sm mb-2">Lead AI Researcher</p>
-                  <p className="text-gray-600 text-sm">
-                    Expert in medical imaging AI with 8+ years of experience in developing 
-                    computer vision algorithms for healthcare applications.
-                  </p>
-                </div>
-                
-                <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                  <div className="w-24 h-24 bg-medical-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-medical-600">JS</span>
-                  </div>
-                  <h3 className="font-bold text-lg text-gray-800">John Smith</h3>
-                  <p className="text-medical-600 text-sm mb-2">Orthopedic Consultant</p>
-                  <p className="text-gray-600 text-sm">
-                    Board-certified orthopedic surgeon specializing in knee disorders with 
-                    15+ years of clinical experience in diagnosing and treating osteoarthritis.
-                  </p>
-                </div>
-                
-                <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                  <div className="w-24 h-24 bg-medical-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-medical-600">AP</span>
-                  </div>
-                  <h3 className="font-bold text-lg text-gray-800">Alex Park</h3>
-                  <p className="text-medical-600 text-sm mb-2">Full Stack Developer</p>
-                  <p className="text-gray-600 text-sm">
-                    Software engineer with expertise in medical applications and 
-                    building user-friendly interfaces for healthcare professionals.
-                  </p>
-                </div>
-              </div>
-            </section>
           </div>
           
           <div className="lg:col-span-1">
@@ -153,19 +112,6 @@ const AboutPage = () => {
                   </li>
                 ))}
               </ul>
-              
-              <div className="mt-8 p-4 bg-medical-50 rounded-lg">
-                <h4 className="font-medium text-medical-700 mb-2">Contact Our Team</h4>
-                <p className="text-sm text-gray-600 mb-4">
-                  Have questions about our system or interested in collaborating?
-                </p>
-                <a 
-                  href="mailto:team@koadetect.com" 
-                  className="text-sm text-medical-600 font-medium hover:text-medical-700"
-                >
-                  team@koadetect.com →
-                </a>
-              </div>
             </div>
           </div>
         </div>

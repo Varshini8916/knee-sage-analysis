@@ -25,8 +25,8 @@ const TeamPage = () => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="team-hero">
+    <div className="animate-fade-in full-width">
+      <div className="team-hero full-width">
         <div className="container-custom">
           <h1 className="section-title">Our Team</h1>
           <div className="team-icon">
@@ -69,22 +69,6 @@ const TeamPage = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="join-team-card">
-          <h2 className="join-team-title">Join Our Team</h2>
-          <p className="join-team-description">
-            We're always looking for talented individuals who are passionate about improving healthcare 
-            through innovative technology. If you're interested in joining our mission, reach out to us.
-          </p>
-          <div className="join-team-actions">
-            <a href="mailto:careers@koadetect.com" className="contact-link">
-              Contact Us
-            </a>
-            <a href="#" className="positions-link">
-              View Open Positions
-            </a>
-          </div>
         </div>
       </div>
     </div>

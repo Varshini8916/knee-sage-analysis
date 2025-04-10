@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header full-width">
       <div className="container-custom header-container">
         <div>
           <Link to="/" className="logo">
